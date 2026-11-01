@@ -1,0 +1,243 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-01T15:09:44+00:00",
+  "title": "Design System: Shrey Patel — portfolio",
+  "extensions": {
+    "colorMeta": {
+      "signal-orange": {
+        "role": "primary",
+        "displayName": "Signal Orange",
+        "canonical": "#bf3f0c",
+        "tonalRamp": [
+          "#3d1404",
+          "#5e1f06",
+          "#8a2d09",
+          "#bf3f0c",
+          "#e0571d",
+          "#f08a5a",
+          "#f7bb9b",
+          "#fbe3d6"
+        ]
+      },
+      "signal-orange-dark": {
+        "role": "primary",
+        "displayName": "Signal Orange (dark theme)",
+        "canonical": "#f06a2a"
+      },
+      "notebook-paper": {
+        "role": "neutral",
+        "displayName": "Notebook Paper",
+        "canonical": "#f4f2ed",
+        "tonalRamp": [
+          "#2a2925",
+          "#4a4843",
+          "#6e6a63",
+          "#9a958c",
+          "#c4bfb5",
+          "#ddd8cf",
+          "#f4f2ed",
+          "#fbfaf7"
+        ]
+      },
+      "page-white": {
+        "role": "neutral",
+        "displayName": "Page White",
+        "canonical": "#fbfaf7"
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#141414"
+      },
+      "pencil-grey": {
+        "role": "neutral",
+        "displayName": "Pencil Grey",
+        "canonical": "#6e6a63"
+      },
+      "rule-line": {
+        "role": "neutral",
+        "displayName": "Rule Line",
+        "canonical": "#ddd8cf"
+      },
+      "night-paper": {
+        "role": "neutral",
+        "displayName": "Night Paper",
+        "canonical": "#121211"
+      },
+      "night-page": {
+        "role": "neutral",
+        "displayName": "Night Page",
+        "canonical": "#1a1a18"
+      },
+      "night-ink": {
+        "role": "neutral",
+        "displayName": "Night Ink",
+        "canonical": "#eceae4"
+      },
+      "night-pencil": {
+        "role": "neutral",
+        "displayName": "Night Pencil",
+        "canonical": "#9a958c"
+      },
+      "night-rule": {
+        "role": "neutral",
+        "displayName": "Night Rule",
+        "canonical": "#2c2b28"
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "The name in the hero; the 404 headline."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Role + pitch line under the name."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Project and timeline entry titles (34px for the flagship)."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Hero intro, project summaries, About; max ~62ch."
+      },
+      "body-small": {
+        "displayName": "Body Small",
+        "purpose": "Model-card rows, timeline points."
+      },
+      "metric": {
+        "displayName": "Metric",
+        "purpose": "Hero numbers, in Signal Orange."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Section headings, nav, dates, tags, row keys."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.23, 1, 0.32, 1)",
+        "purpose": "Everything entering or responding: presses, viewer, back-to-top, icon nudges."
+      },
+      {
+        "name": "ease-in-out",
+        "value": "cubic-bezier(0.77, 0, 0.175, 1)",
+        "purpose": "On-screen movement."
+      },
+      {
+        "name": "press",
+        "value": "scale(0.97) 160ms",
+        "purpose": ":active feedback on every pressable control (0.99 for screenshots)."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The one filled action: 'View the work'.",
+      "html": "<a class=\"ds-btn ds-btn-primary\" href=\"#\">View the work <svg width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 3V21M12 21L20.5 12.5M12 21L3.5 12.5\"/></svg></a>",
+      "css": ".ds-btn{display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 16px;border:1px solid var(--ink,#141414);border-radius:0;font:400 13px 'JetBrains Mono Variable',ui-monospace,monospace;text-decoration:none;transition:color 160ms cubic-bezier(.23,1,.32,1),background-color 160ms cubic-bezier(.23,1,.32,1),transform 160ms cubic-bezier(.23,1,.32,1);} .ds-btn-primary{background:var(--ink,#141414);color:var(--bg,#f4f2ed);} .ds-btn-primary:hover{background:transparent;color:var(--ink,#141414);} .ds-btn:active{transform:scale(.97);} .ds-btn:focus-visible{outline:2px solid var(--accent,#bf3f0c);outline-offset:3px;}"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Secondary actions: CV, GitHub, LinkedIn.",
+      "html": "<a class=\"ds-btn-o\" href=\"#\"><svg width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 21.4V2.6C4 2.27 4.27 2 4.6 2H16.25L20 5.75V21.4C20 21.73 19.73 22 19.4 22H4.6C4.27 22 4 21.73 4 21.4Z\"/><path d=\"M8 10H16M8 18H16M8 14H12\"/></svg>CV</a>",
+      "css": ".ds-btn-o{display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 16px;border:1px solid var(--ink,#141414);border-radius:0;background:transparent;color:var(--ink,#141414);font:400 13px 'JetBrains Mono Variable',ui-monospace,monospace;text-decoration:none;transition:color 160ms cubic-bezier(.23,1,.32,1),background-color 160ms cubic-bezier(.23,1,.32,1),transform 160ms cubic-bezier(.23,1,.32,1);} .ds-btn-o:hover{background:var(--ink,#141414);color:var(--bg,#f4f2ed);} .ds-btn-o:active{transform:scale(.97);} .ds-btn-o:focus-visible{outline:2px solid var(--accent,#bf3f0c);outline-offset:3px;}"
+    },
+    {
+      "name": "Section Nav",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Header section links; current section in ink with an orange underline.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#\" aria-current=\"location\">work</a><a href=\"#\">about</a><a href=\"#\">background</a><a href=\"#\">contact</a></nav>",
+      "css": ".ds-nav{display:flex;gap:24px;font:400 13px 'JetBrains Mono Variable',ui-monospace,monospace;} .ds-nav a{position:relative;display:flex;align-items:center;height:64px;color:var(--muted,#6e6a63);text-decoration:none;} .ds-nav a:hover,.ds-nav a[aria-current]{color:var(--ink,#141414);} .ds-nav a[aria-current]::after{content:'';position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--accent,#bf3f0c);}"
+    },
+    {
+      "name": "Stack Tag",
+      "kind": "chip",
+      "refersTo": "stack-tag",
+      "description": "Technology tags in a project card footer.",
+      "html": "<span class=\"ds-tag\">pgvector</span>",
+      "css": ".ds-tag{display:inline-block;padding:2px 8px;border:1px solid var(--line,#ddd8cf);background:var(--surface,#fbfaf7);color:var(--muted,#6e6a63);font:400 11px 'JetBrains Mono Variable',ui-monospace,monospace;}"
+    },
+    {
+      "name": "Model Card",
+      "kind": "card",
+      "refersTo": "model-card",
+      "description": "A project entry: title, meta, summary, eval strip, then problem/approach/eval rows.",
+      "html": "<article class=\"ds-card\"><header><h3>AI Radar</h3><span class=\"ds-meta\">Deployed · May – Jun 2026 · solo</span><p>Every day it collects and summarises the latest AI papers, news, tools and benchmarks.</p><p class=\"ds-eval\"><span>eval</span> Hit@1 <b>100%</b> on section queries</p></header><dl><dt>problem</dt><dd>Keeping up with AI papers by hand takes hours a day.</dd><dt>eval</dt><dd>Hit@1 = <b>100%</b> on targeted section queries.</dd></dl></article>",
+      "css": ".ds-card{border:1px solid var(--line,#ddd8cf);background:var(--surface,#fbfaf7);color:var(--ink,#141414);font:400 15px/1.6 'Inter Tight Variable',system-ui,sans-serif;max-width:560px;} .ds-card header{padding:20px 24px;border-bottom:1px solid var(--line,#ddd8cf);} .ds-card h3{margin:0;font-size:22px;font-weight:600;letter-spacing:-.025em;} .ds-meta{font:400 12px 'JetBrains Mono Variable',ui-monospace,monospace;color:var(--muted,#6e6a63);} .ds-card header p{margin:8px 0 0;font-size:17px;line-height:1.35;} .ds-eval{font:400 13px 'JetBrains Mono Variable',ui-monospace,monospace !important;} .ds-eval span{color:var(--muted,#6e6a63);margin-right:12px;} .ds-card b{font-family:'JetBrains Mono Variable',ui-monospace,monospace;font-weight:500;color:var(--accent,#bf3f0c);} .ds-card dl{display:grid;grid-template-columns:110px 1fr;margin:0;} .ds-card dt{padding:12px 0 12px 24px;border-bottom:1px solid var(--line,#ddd8cf);font:400 12px 'JetBrains Mono Variable',ui-monospace,monospace;color:var(--muted,#6e6a63);} .ds-card dd{margin:0;padding:12px 24px 12px 0;border-bottom:1px solid var(--line,#ddd8cf);}"
+    },
+    {
+      "name": "Hero Metric",
+      "kind": "custom",
+      "description": "One of the four hero numbers with its source link.",
+      "html": "<div class=\"ds-metric\"><span class=\"ds-metric-v\">260+</span><span class=\"ds-metric-l\">records scraped, summarised and stored daily</span><a href=\"#\">AI Radar ↓</a></div>",
+      "css": ".ds-metric{display:flex;flex-direction:column;max-width:240px;padding:32px 24px 32px 0;border-top:1px solid var(--line,#ddd8cf);border-bottom:1px solid var(--line,#ddd8cf);} .ds-metric-v{font:500 44px/1 'JetBrains Mono Variable',ui-monospace,monospace;letter-spacing:-.025em;color:var(--accent,#bf3f0c);} .ds-metric-l{margin-top:12px;font:400 15px/1.35 'Inter Tight Variable',system-ui,sans-serif;color:var(--muted,#6e6a63);} .ds-metric a{margin-top:16px;font:400 12px 'JetBrains Mono Variable',ui-monospace,monospace;color:var(--ink,#141414);text-decoration:none;} .ds-metric a:hover{color:var(--accent,#bf3f0c);}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Lab Notebook",
+    "overview": "The site reads like an engineer's working notebook: warm paper, ruled hairlines, mono annotations in the margin, and results written down honestly, including the ones still to come. Every project is entered as a model card (problem → approach → eval → shipped), and every number is a measurement. Nothing is decorated to look technical; the technical cues (code braces in the `{SP}` mark, mono labels, eval strips) are there because they carry meaning.\n\nDensity is comfortable, not airy: a wide content column with labels in their own margin column on desktop, generous section breaks, tight groups inside each entry. Light and dark are both first-class, swapped entirely through CSS variables. Real screenshots are the only imagery; they sit on paper like exhibits taped into the notebook.\n\nThe voice is confident and plain. The interface recedes so the work and its evidence lead.",
+    "keyCharacteristics": [
+      "Warm paper ground with ink type and one orange accent.",
+      "Square corners and 1px hairlines everywhere; no shadows, gradients or rounded cards.",
+      "Inter Tight for prose and display, JetBrains Mono for labels, dates, tags and every number.",
+      "Structured \"model card\" entries with an eval line up front.",
+      "Quiet, fast feedback motion; the only authored moment is the 404's failing-test mark."
+    ],
+    "rules": [
+      {
+        "name": "The Measured Orange Rule",
+        "body": "Orange marks what was measured or what deserves a second look: numbers, the mark, links, focus, the active location. It never fills a surface, a card or a button, and never sets running body text.",
+        "section": "colors"
+      },
+      {
+        "name": "The Token-Only Rule",
+        "body": "Components use only the token classes (`bg-bg`, `bg-surface`, `text-ink`, `text-muted`, `border-line`, `text-accent`). No hex in components; dark mode is a variable swap, never a `dark:` variant.",
+        "section": "colors"
+      },
+      {
+        "name": "The Mono Means Data Rule",
+        "body": "Mono is for measurements, labels, dates, code and navigation, never a costume for prose.",
+        "section": "typography"
+      },
+      {
+        "name": "The Hairline Rule",
+        "body": "Separation is always a 1px rule or a tonal step, never a shadow, glow or gradient.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do keep every corner square and every divider a 1px Rule Line.",
+      "Do set numbers and metrics in JetBrains Mono, highlighted in Signal Orange.",
+      "Do use Iconoir (via the shared `Icon` component) for every icon.",
+      "Do give each project a plain-language summary and an eval line before the detail.",
+      "Do keep UI motion under 300ms on the strong ease-out curve, with a reduced-motion path."
+    ],
+    "donts": [
+      "Don't add shadows, gradients, glows, rounded corners or blue/purple accents.",
+      "Don't use an eyebrow/kicker label above a heading or numbered section labels.",
+      "Don't use intro animations, typing effects, particle backgrounds, progress-bar skills or logo walls.",
+      "Don't fill surfaces or buttons with Signal Orange.",
+      "Don't hard-code hex values in components or use `dark:` variants."
+    ]
+  }
+}

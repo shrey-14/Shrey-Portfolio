@@ -1,0 +1,205 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens. Change colours here only; components use the Tailwind
+ * names (bg-bg, text-ink, text-muted, border-line, text-accent, bg-surface).
+ * Dark mode swaps the variables, so components never need `dark:` classes.
+ */
+:root {
+  --bg: #f4f2ed;
+  --surface: #fbfaf7;
+  --ink: #141414;
+  --muted: #6e6a63;
+  --line: #ddd8cf;
+  --accent: #bf3f0c; /* darkest orange that still reads as orange; 4.8:1 on bg, 5.1:1 on surface */
+  color-scheme: light;
+  /* Motion curves: strong ease-out for anything entering or responding, ease-in-out for on-screen movement. */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #121211;
+    --surface: #1a1a18;
+    --ink: #eceae4;
+    --muted: #9a958c;
+    --line: #2c2b28;
+    --accent: #f06a2a;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #121211;
+  --surface: #1a1a18;
+  --ink: #eceae4;
+  --muted: #9a958c;
+  --line: #2c2b28;
+  --accent: #f06a2a;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --font-sans: "Inter Tight Variable", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
+}
+
+@layer base {
+  /* In-page scrolling is eased in JS (lib/smooth-scroll.ts); CSS smooth-scroll would fight it. */
+  [tabindex="-1"]:focus {
+    outline: none; /* sections receive focus after a jump; they aren't controls */
+  }
+  html {
+    scrollbar-color: var(--line) var(--bg);
+    scrollbar-gutter: stable; /* the image viewer locks scroll; keep the page from shifting sideways */
+  }
+  body {
+    @apply bg-bg text-ink font-sans antialiased leading-relaxed;
+  }
+  p,
+  dd,
+  li,
+  figcaption {
+    text-wrap: pretty;
+  }
+  ::selection {
+    background: var(--accent);
+    color: var(--bg); /* bg on accent passes in both themes; white on the dark-theme orange did not */
+  }
+  .theme-switching *,
+  .theme-switching *::before,
+  .theme-switching *::after {
+    transition: none !important;
+  }
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+  a {
+    text-underline-offset: 3px;
+  }
+  a,
+  button {
+    -webkit-tap-highlight-color: transparent; /* :active press states replace the grey flash */
+  }
+}
+
+/*
+ * Motion. One authored moment: on the 404 page the {✗} cross in the mark draws itself, a failing test.
+ * Everything else is feedback. Defaults are the finished state, so nothing hides if animation fails.
+ */
+@keyframes tick-draw {
+  from { stroke-dashoffset: 1; }
+  to { stroke-dashoffset: 0; }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+}
+@keyframes icon-swap {
+  from { opacity: 0; transform: rotate(-45deg) scale(0.85); filter: blur(2px); }
+}
+
+@layer components {
+  .logo-tick {
+    stroke-dasharray: 1;
+  }
+  .icon {
+    transition: transform 160ms var(--ease-out);
+  }
+  /* Press feedback for anything pressable: small, instant, and never on a decorative element. */
+  .press {
+    transition-property: color, background-color, border-color, transform;
+    transition-duration: 160ms;
+    transition-timing-function: var(--ease-out);
+  }
+  .press:active { transform: scale(0.97); }
+  .press-soft:active { transform: scale(0.99); } /* large targets (screenshots) need a gentler squeeze */
+  .press:disabled:active { transform: none; }
+
+  /* Thumbnails: the expand chip shows on hover/focus with a mouse, and always on touch screens. */
+  .expand-chip {
+    transition: opacity 150ms var(--ease-out);
+  }
+  @media (hover: hover) {
+    .expand-chip { opacity: 0; }
+    .group:hover .expand-chip,
+    .group:focus-visible .expand-chip { opacity: 1; }
+  }
+
+  /* Screenshot viewer: a transition (not keyframes) so open → quick close retargets instead of jumping.
+     Esc and the arrow keys skip motion entirely; only pointer-initiated closes play the 150ms exit. */
+  .viewer {
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 220ms var(--ease-out), transform 220ms var(--ease-out);
+  }
+  .viewer::backdrop {
+    opacity: 1;
+    transition: opacity 220ms var(--ease-out);
+  }
+  @starting-style {
+    .viewer[open] { opacity: 0; transform: scale(0.98); }
+    .viewer[open]::backdrop { opacity: 0; }
+  }
+  .viewer[data-closing] {
+    opacity: 0;
+    transform: scale(0.98);
+    transition-duration: 150ms;
+  }
+  .viewer[data-closing]::backdrop {
+    opacity: 0;
+    transition-duration: 150ms;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .logo-tick {
+      animation: tick-draw 700ms var(--ease-out) 300ms both;
+    }
+    /* Hovering the 404 mark re-runs the failing test. */
+    .logo-link:hover .logo-tick {
+      animation: tick-draw 500ms var(--ease-out) both;
+    }
+    .icon-swap { animation: icon-swap 200ms var(--ease-out); }
+  }
+  /* Arrow nudges are hover-only decoration: real mice only, so a tap never leaves an arrow stuck. */
+  @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+    a:hover > .icon-arrow-up-right { transform: translate(2px, -2px); }
+    a:hover > .icon-arrow-right { transform: translateX(3px); }
+    a:hover > .icon-arrow-left { transform: translateX(-3px); }
+    a:hover > .icon-arrow-down { transform: translateY(3px); }
+    button:hover > .icon-arrow-up { transform: translateY(-3px); }
+  }
+  /* Reduced motion keeps the meaning (things appear, state changes) without movement. */
+  @media (prefers-reduced-motion: reduce) {
+    .press:active, .press-soft:active { transform: none; }
+    .viewer, .viewer[data-closing], .viewer[open] { transform: none; }
+    .icon-swap { animation: fade-in 120ms ease-out; }
+  }
+}
+
+/* Print: the work and the facts, without the interface. */
+@media print {
+  :root, :root[data-theme="dark"] {
+    --bg: #fff; --surface: #fff; --ink: #000; --muted: #444; --line: #bbb; --accent: #000;
+    color-scheme: light;
+  }
+  .no-print { display: none !important; }
+  article, section > div > div { break-inside: avoid; }
+  a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 0.8em; color: var(--muted); }
+}
+
+/* Theme toggle shows the theme you'd switch to: moon in light, sun in dark. Unlayered so it beats `inline-block`. */
+.theme-icon-sun { display: none; }
+:root[data-theme="dark"] .theme-icon-sun { display: inline-block; }
+:root[data-theme="dark"] .theme-icon-moon { display: none; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme-icon-sun { display: inline-block; }
+  :root:not([data-theme="light"]) .theme-icon-moon { display: none; }
+}
