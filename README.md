@@ -2,7 +2,7 @@
 
 The personal site of Shrey Patel, AI Engineer in London: LLM and RAG systems that get evaluated, not just demoed.
 
-**Live:** _add the URL here once deployed_ · **Contact:** shreypatel141102@gmail.com
+**Live:** https://shreypp.vercel.app · **Contact:** shreypatel141102@gmail.com
 
 Every project is presented like an ML model card (problem → approach → eval → shipped), with a one-line eval result up front, real screenshots and a "how it works" figure. Every number on the page is a real measurement.
 
