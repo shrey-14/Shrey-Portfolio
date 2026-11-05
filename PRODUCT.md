@@ -48,6 +48,7 @@ Two claims together, both backed by the work:
 
 - Canonical assets (fixed): `public/shrey.webp` / `public/shrey.png` (photo), `public/Shrey_Patel_CV.pdf`.
 - Projects with real metrics: AI Radar (260+ records/day, Hit@1 = 100% on targeted section queries, set size unknown), SmartResto (1st place company hackathon; forecast MAPE 10–14%, mAP@50 0.53).
+- UK Airline Punctuality: Tableau dashboard on UK CAA data (MSc coursework, not affiliated with easyJet), live on Tableau Public. easyJet 65.8% on time; Gatwick 58% vs Liverpool 80%; Gatwick over 22 minutes average delay.
 - Experience: Petpooja Data Science Intern (800+ BigQuery pipelines, 30% lower latency; 100+ VLM prompts, +15% OCR accuracy).
 - Education: MSc AI, Brunel (Jan 2026 – Apr 2027); BEng IT, LJ University, 9.76/10.
 - Code: github.com/shrey-14. No testimonials, press or employer endorsements exist; do not fabricate any.

@@ -2,7 +2,7 @@
 
 The personal site of Shrey Patel, AI Engineer in London: LLM and RAG systems that get evaluated, not just demoed.
 
-**Live:** https://shreypp.vercel.app · **Contact:** shreypatel141102@gmail.com
+**Live:** [shreypp.vercel.app](https://shreypp.vercel.app) · **Contact:** shreypatel141102@gmail.com
 
 Every project is presented like an ML model card (problem → approach → eval → shipped), with a one-line eval result up front, real screenshots and a "how it works" figure. Every number on the page is a real measurement.
 
@@ -99,7 +99,7 @@ The visual system, called "The Lab Notebook", is documented in [`DESIGN.md`](DES
 ### Vercel (recommended)
 
 1. Push the repo to GitHub and import it at [vercel.com/new](https://vercel.com/new). Next.js is detected automatically.
-2. Set the site's public URL, either as `profile.siteUrl` in `content/site.ts` or as the environment variable `NEXT_PUBLIC_SITE_URL=https://your-domain.com`. It's used for link-preview images, the canonical URL and the sitemap. Without it the site still works, but link previews have no image and the sitemap is empty.
+2. Set the site's public URL, either as `profile.siteUrl` in `content/site.ts` (currently `https://shreypp.vercel.app`) or as the environment variable `NEXT_PUBLIC_SITE_URL`, which takes priority. It's used for link-preview images, the canonical URL and the sitemap. Without it, the build falls back to Vercel's default project address, which may not be the one you share.
 3. Add your custom domain under Project → Settings → Domains.
 
 ### Any static host

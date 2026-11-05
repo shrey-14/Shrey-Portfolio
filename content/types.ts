@@ -20,6 +20,7 @@ export type Project = {
   meta: string; // status · dates · solo/team, e.g. "Deployed · May – Jun 2026 · solo"
   summary: string; // one plain-language line: what it does, no jargon
   evalStrip: string; // one-line proof shown in the header; only numbers already stated in `eval`
+  evalLabel?: string; // replaces "eval" on the strip and row, e.g. "finding" for an analysis project
   problem: string;
   approach: string;
   eval: string;

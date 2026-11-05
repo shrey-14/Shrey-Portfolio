@@ -21,8 +21,9 @@ export const profile = {
   metaDescription:
     "Shrey Patel, AI Engineer in London. I build LLM and RAG systems with evaluation built in. MSc AI, Brunel University London.",
   lastUpdated: "Nov 2026",
-  // TODO: your custom domain, e.g. "https://shreypatel.dev". Used for link previews, canonical URL and sitemap.
-  siteUrl: "",
+  // The public address: used for link previews, the canonical URL and the sitemap.
+  // TODO: switch to "https://shreypatel.dev" once the custom domain is verified on Vercel.
+  siteUrl: "https://shreypp.vercel.app",
 };
 
 export const socials: Social[] = [
@@ -177,6 +178,54 @@ export const projects: Project[] = [
     ],
     stack: ["YOLOv8", "XGBoost", "Prophet", "LLaMA", "FastAPI", "React"],
     links: { code: "https://github.com/shrey-14/smart-resto" },
+  },
+  {
+    slug: "uk-airline-punctuality",
+    title: "UK Airline Punctuality",
+    meta: "Published · Apr – May 2026 · solo",
+    summary:
+      "An interactive dashboard that shows an airline network manager why flights are late and which airports are to blame, built on UK CAA punctuality data.",
+    evalLabel: "finding",
+    evalStrip: "easyJet's worst airport, Gatwick, is **58%** on time vs **80%** at its best",
+    problem:
+      "A late-flight average hides where the problem sits. Is it the airline, the airport, or the size of the airport? A network manager at easyJet needs all three answered in one place.",
+    approach:
+      "A Python script scrapes monthly CAA punctuality files (2019 and 2021 to 2024, skipping 2020 for COVID) and joins them to airport passenger and location data. Four Tableau views each answer one question: an airline ranking, a map of easyJet's airports, a passenger-volume vs delay scatter, and a box plot of how consistent each airline is across airports. A selector isolates one airline at a time. I rebuilt the same dashboard in Power BI to compare the two tools.",
+    eval: "easyJet sits mid-table at **65.8%** on time, ahead of Jet2 (**60.4%**) and Ryanair (**64.5%**) in this set. The problem is local: Gatwick is its worst airport at **58%**, and Liverpool its best at **80%**. Gatwick also has the highest average delay of any UK airport, over **22 minutes**, despite handling fewer passengers than Heathrow.",
+    shipped: "Live on Tableau Public. Second build in Power BI. MSc coursework, not affiliated with easyJet.",
+    screens: [
+      {
+        src: "/projects/uk-airline-dashboard/uk-flights-dashboard.png",
+        width: 2400,
+        height: 1471,
+        alt: "UK Flights Network Performance Dashboard with four views: airline on-time rankings for 2024, a UK map of easyJet's on-time performance by airport, a scatter of passenger volume against average delay with Gatwick highest, and a box plot of each airline's consistency across airports.",
+        caption: "The dashboard: airline ranking, easyJet's airports on a map, passenger volume against delay, and how consistent each airline is.",
+      },
+    ],
+    flow: [
+      {
+        label: "the data",
+        steps: [
+          { name: "Scrape", note: "monthly CAA punctuality files, Python" },
+          { name: "Join", note: "passenger volumes and airport coordinates" },
+          { name: "Derive", note: "on-time % and flags as Tableau calculated fields" },
+          { name: "Publish", note: "Tableau Public" },
+        ],
+      },
+      {
+        label: "the dashboard",
+        steps: [
+          { name: "Rank", note: "easyJet against its competitors" },
+          { name: "Map", note: "easyJet's airports against its own average" },
+          { name: "Test", note: "passenger volume against delay" },
+          { name: "Drill", note: "one airline's airports at a time" },
+        ],
+      },
+    ],
+    stack: ["Tableau", "Power BI", "Python", "BeautifulSoup", "pandas"],
+    links: {
+      live: "https://public.tableau.com/app/profile/shrey.patel7620/viz/UKFlightsNetworkPerformanceDashboard/Dashboard1",
+    },
   },
   {
     slug: "finsolve",

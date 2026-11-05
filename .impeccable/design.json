@@ -96,7 +96,7 @@
       },
       "title": {
         "displayName": "Title",
-        "purpose": "Project and timeline entry titles (34px for the flagship)."
+        "purpose": "Project titles, the same size on every card; timeline entry titles use 18px."
       },
       "body": {
         "displayName": "Body",

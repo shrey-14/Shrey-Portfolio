@@ -29,9 +29,9 @@ typography:
     letterSpacing: "-0.025em"
   title:
     fontFamily: "Inter Tight Variable, system-ui, sans-serif"
-    fontSize: "22px"
+    fontSize: "28px"
     fontWeight: 600
-    lineHeight: 1.3
+    lineHeight: 1.25
     letterSpacing: "-0.025em"
   body:
     fontFamily: "Inter Tight Variable, system-ui, sans-serif"
@@ -147,7 +147,7 @@ One warm neutral family carries the page; a single orange signals results and em
 ### Hierarchy
 - **Display** (700, 84px desktop / 42px mobile, line-height 1, -0.035em): the name in the hero; the 404 headline.
 - **Headline** (500, 40px / 24px, 1.15): the role + pitch line under the name, with the role set in Pencil Grey.
-- **Title** (600, 22px; 34px for the flagship project): project and timeline entry titles.
+- **Title** (600, 28px desktop / 24px mobile, the same on every project): project titles. Timeline entry titles use 18px.
 - **Body** (400, 17–18px, 1.625; max ~62ch): hero intro, project summaries, About.
 - **Body Small** (400, 15px): model-card rows, timeline points, captions at 13–14px.
 - **Metric** (JetBrains Mono 500, 44px / 34px, -0.025em): the four hero numbers, in Signal Orange.

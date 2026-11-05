@@ -46,8 +46,8 @@ scripts/           screenshot-variants.swift: generates those -640/-960 variants
 - `**text**` inside content strings renders as an orange mono highlight (see `ui/Highlight.tsx`). Use it for numbers and metrics only.
 - Each section uses `<Section id label>` from `components/ui/Section.tsx`; the label renders as the section's `<h2>`. No section numbers. If a section should appear in the header nav, add its `id` to `nav` in `content/site.ts`; the mobile nav shows ids on one line, so mark extras `mobile: false`.
 - Projects follow the "model card" shape: problem → approach → eval → shipped. Every project should state a metric and its eval set where possible.
-- Every project has a plain-language `summary` (what it does, no jargon) for non-technical readers, and an `evalStrip`: one line of proof shown in the card header, using only numbers already in its `eval`. Explain metrics in place using facts already stated; never add numbers.
-- Optional `screens` are real screenshots from `public/projects/<project>/` (first one shown large); give each true `width`/`height`, descriptive `alt` and a plain caption. Crop browser chrome out; uncropped sources live in the gitignored `/originals`. For each screenshot also generate `name-640` / `name-960` (`.avif` + `.jpg`) and `name-<width>.avif`; `ScreenGallery` serves them via `srcset`.
+- Every project has a plain-language `summary` (what it does, no jargon) for non-technical readers, and an `evalStrip`: one line of proof shown in the card header, using only numbers already in its `eval`. Analysis projects can set `evalLabel: "finding"` to relabel the strip and row. Explain metrics in place using facts already stated; never add numbers.
+- Optional `screens` are real screenshots from `public/projects/<project>/` (first one shown large); give each true `width`/`height`, descriptive `alt` and a plain caption. Crop browser chrome out; uncropped sources live in the gitignored `/originals`. For each screenshot also generate `name-640` / `name-960` (`.avif` + `.jpg`) with `scripts/screenshot-variants.swift`; `ScreenGallery` serves them via `srcset`. Downscale very large captures to about 2400px first, because the original is what retina screens load.
 - Optional `flow` renders a "how it works" figure; optional `evalExample` must be real system output, never written by hand.
 - No eyebrow/kicker labels above headings: status goes in the project's `meta` line.
 - Icons: only Iconoir, via `<Icon name="…">` (add new names to the map in `ui/Icon.tsx`); never unicode glyphs or another icon set.
@@ -77,5 +77,5 @@ scripts/           screenshot-variants.swift: generates those -640/-960 variants
 - Add the eval set size to AI Radar's Hit@1 claim.
 - Add one real AI Radar example (query, top result, judge verdict) as `projects[0].evalExample`.
 - FinSolve card: add stack, live link and eval results when they exist (repo: shrey-14/need-to-know).
-- Set the custom domain in `profile.siteUrl` (or `NEXT_PUBLIC_SITE_URL`); until then link previews have no image and the sitemap is empty.
+- Live at https://shreypp.vercel.app (`profile.siteUrl`). When `shreypatel.dev` is verified on Vercel, switch `profile.siteUrl` to it and update the README's Live link.
 - Possible additions: a project case-study page per project (`app/projects/[slug]/page.tsx`), a writing/blog section, an Open Graph image via `app/opengraph-image.tsx`.

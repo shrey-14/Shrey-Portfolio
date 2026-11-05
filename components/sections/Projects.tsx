@@ -6,8 +6,8 @@ import { Section } from "@/components/ui/Section";
 export function Projects() {
   return (
     <Section id="work" label={sections.work}>
-      {projects.map((p, i) => (
-        <ProjectCard key={p.slug} project={p} featured={i === 0} />
+      {projects.map((p) => (
+        <ProjectCard key={p.slug} project={p} />
       ))}
       <a
         href={moreWorkHref}

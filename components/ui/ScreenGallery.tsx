@@ -150,9 +150,11 @@ function Viewer({
       <div className="flex h-full flex-col" onClick={closeOnBackdrop}>
         <div className="flex items-center justify-between gap-4 px-4 pt-4 md:px-6">
           <span className="flex items-center gap-4 font-mono text-xs">
-            <span>
-              {index + 1} / {screens.length}
-            </span>
+            {screens.length > 1 && (
+              <span>
+                {index + 1} / {screens.length}
+              </span>
+            )}
             <a
               href={screen.src}
               target="_blank"
@@ -184,17 +186,21 @@ function Viewer({
         </div>
 
         <div className="flex items-center gap-4 px-4 pb-4 md:px-6 md:pb-6">
-          <button ref={prevBtn} type="button" onClick={() => onIndex(index - 1)} disabled={!hasPrev} className={iconBtn}>
-            <Icon name="arrow-left" />
-            <span className="sr-only">{ui.gallery.prev}</span>
-          </button>
+          {screens.length > 1 && (
+            <button ref={prevBtn} type="button" onClick={() => onIndex(index - 1)} disabled={!hasPrev} className={iconBtn}>
+              <Icon name="arrow-left" />
+              <span className="sr-only">{ui.gallery.prev}</span>
+            </button>
+          )}
           <p aria-live="polite" className="mx-auto max-w-[70ch] flex-1 text-center text-[14px] leading-snug md:text-[15px]">
             {screen.caption}
           </p>
-          <button ref={nextBtn} type="button" onClick={() => onIndex(index + 1)} disabled={!hasNext} className={iconBtn}>
-            <Icon name="arrow-right" />
-            <span className="sr-only">{ui.gallery.next}</span>
-          </button>
+          {screens.length > 1 && (
+            <button ref={nextBtn} type="button" onClick={() => onIndex(index + 1)} disabled={!hasNext} className={iconBtn}>
+              <Icon name="arrow-right" />
+              <span className="sr-only">{ui.gallery.next}</span>
+            </button>
+          )}
         </div>
       </div>
     </dialog>
